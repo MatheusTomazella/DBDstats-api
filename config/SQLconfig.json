@@ -1,0 +1,7 @@
+{
+    "port": "3309",
+    "database": "DBD",
+    "host": "localhost",
+    "user": "root",
+    "password": ""
+}
