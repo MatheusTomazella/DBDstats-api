@@ -1,26 +1,22 @@
 const { POSTuser, GETuser, POSTmatch, GETmatch, DELETEuser, PUTuser } = require('./routes');
 const bp = require( 'body-parser' );
-const { response, request } = require('express');
+const cors = require( 'cors' )
 
 const app = require( 'express' )();
 
 /* Middlewares */
 
-    app.use( ( request, response, next ) => {
-        request.header( 'Access-Control-Allow-Origin', '*' );
-        request.header( 'Access-Control-Allow-Headers', '*' );
-        if ( request.method === 'OPTIONS' ){
-            response.header( 'Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE' )
-            response.status(200).json({});
-        }
-        next();
-    } )
+    app.use(cors());
     app.use( bp.json() );
     app.use( bp.urlencoded( { extended: false } ) );
 
 /* Routes */
 
     /* GET */
+
+        app.get( '/', ( request, response ) => {
+            response.status(200).send( true )
+        } )
 
         app.get( '/user', GETuser );
 
