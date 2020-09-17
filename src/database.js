@@ -18,6 +18,7 @@ function fetchUser ( name = undefined, id, sendPassword = false ){
             connection.query( query, ( error, result ) => {
                 if ( error ) reject( { code: 'QUERRY_ERR', raw: error } );
                 if ( sendPassword != true && sendPassword != 'true' ) for ( let i in result ) result[ i ].password = 'blocked';
+                connection.end();
                 resolve( result );
             } )
         } )
@@ -35,6 +36,7 @@ function fetchMatch ( id, userId, role ){
             else if ( userId != undefined ) query += `WHERE userId = ${userId};`;
             connection.query( query, ( error, result ) => {
                 if ( error ) reject( error );
+                connection.end();
                 resolve( result );
             } );
         } )
@@ -67,7 +69,10 @@ module.exports = {
                 const values = [ nome, password, survivor_rank, killer_rank ]
                 connection.query( 'INSERT INTO user VALUES ( NULL, ?, ?, ?, ? )', values, ( error, result ) => {
                     if ( error != undefined || result == undefined ) reject( { code: 'QUERRY_ERR', raw: error } );
-                    else resolve( fetchUser( null, result.insertId ) );
+                    else{
+                        connection.end();
+                        resolve( fetchUser( null, result.insertId ) );
+                    }
                 } )
             } )
         } )
@@ -94,7 +99,10 @@ module.exports = {
                 if ( error ) reject( { code: "CONN_ERR", raw: error } )
                 else connection.query( base_insert_query[ role ], values, ( error, result ) => {
                     if ( error != undefined || result == undefined ) reject( { code: 'QUERRY_ERR', raw: error } );
-                    else resolve( fetchMatch( result.insertId, null, role ) );
+                    else{ 
+                        connection.end()
+                        resolve( fetchMatch( result.insertId, null, role ) );
+                    }
                 } )
             } )
         } )
@@ -113,6 +121,7 @@ module.exports = {
                     if ( error ) reject( { code: 'QUERY_ERR', raw: error } );
                     else if ( result.affectedRows >= 1 ) resolve( result )
                     else reject( { code: 'NO_USER_FOUND', raw: { desc: 'No user found using given parameters' } } )
+                    connection.end()
                 } )
             } )
         } )
