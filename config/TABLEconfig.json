@@ -1,10 +1,10 @@
 {
     "match_table_collums": {
-        "survivor": [ "userId", "result", "rank", "survivor", "total_bp", "obj_bp", "obj_rank", "sur_bp", "sur_rank", "alt_bp", "alt_rank", "aud_bp", "aud_rank", "perk_1", "perk_1_rank", "perk_2", "perk_2_rank", "perk_3", "perk_3_rank", "perk_4", "perk_4_rank", "item", "item_rank", "add_on_1", "add_on_1_rank", "add_on_2", "add_on_2_rank" ],
-        "killer": [ "userId", "kills", "rank", "killer", "total_bp", "brt_bp", "brt_rank", "scr_bp", "scr_rank", "des_bp", "des_rank", "cac_bp", "cac_rank", "perk_1", "perk_1_rank", "perk_2", "perk_2_rank", "perk_3", "perk_3_rank", "perk_4", "perk_4_rank", "add_on_1", "add_on_1_rank", "add_on_2", "add_on_2_rank" ]
+        "survivor": [ "userId", "datetime", "result", "rank", "survivor", "total_bp", "obj_bp", "obj_rank", "sur_bp", "sur_rank", "alt_bp", "alt_rank", "aud_bp", "aud_rank", "perk_1", "perk_1_rank", "perk_2", "perk_2_rank", "perk_3", "perk_3_rank", "perk_4", "perk_4_rank", "item", "item_rank", "add_on_1", "add_on_1_rank", "add_on_2", "add_on_2_rank" ],
+        "killer": [ "userId", "datetime", "kills", "rank", "killer", "total_bp", "brt_bp", "brt_rank", "scr_bp", "scr_rank", "des_bp", "des_rank", "cac_bp", "cac_rank", "perk_1", "perk_1_rank", "perk_2", "perk_2_rank", "perk_3", "perk_3_rank", "perk_4", "perk_4_rank", "add_on_1", "add_on_1_rank", "add_on_2", "add_on_2_rank" ]
     },
     "base_insert_query": {
-        "survivor": "INSERT INTO survivor_match VALUES ( NULL, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? );",
-        "killer": "INSERT INTO killer_match VALUES ( NULL, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? );"
+        "survivor": "INSERT INTO survivor_match VALUES ( NULL, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? );",
+        "killer": "INSERT INTO killer_match VALUES ( NULL, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? );"
     }
 }
